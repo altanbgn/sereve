@@ -1,7 +1,7 @@
+use std::fs::{metadata, File, OpenOptions};
 use crate::Server;
 use clap::Args;
 use serde::{Deserialize, Serialize};
-use std::fs::{metadata, File, OpenOptions};
 
 #[derive(Args, Debug, Serialize, Deserialize)]
 pub struct Remove {
