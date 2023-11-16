@@ -3,6 +3,7 @@ use clap::Subcommand;
 pub mod add;
 pub mod remove;
 pub mod list;
+pub mod connect;
 
 #[derive(Subcommand, Debug)]
 pub enum MainCommand {
@@ -14,5 +15,7 @@ pub enum MainCommand {
 
     #[command(about = "Lists servers")]
     List(list::List),
-}
 
+    #[command(about = "Connects to a server")]
+    Connect(connect::Connect),
+}

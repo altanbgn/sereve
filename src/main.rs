@@ -1,30 +1,34 @@
 mod commands;
 
-use serde::{Deserialize, Serialize};
 use clap::Parser;
-use tabled::{Tabled};
 use commands::MainCommand;
+use serde::{Deserialize, Serialize};
+use tabled::Tabled;
 
 #[derive(Parser, Debug)]
 #[command(author, version)]
 #[command(about = "A basic example of clap usage.")]
 pub struct Cli {
     #[command(subcommand)]
-    command: Option<MainCommand>
+    command: Option<MainCommand>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Tabled)]
 pub struct Server {
+    id: usize,
     name: String,
-    ip: String,
+    username: String,
+    host: String,
     port: u16,
 }
 
 impl Server {
-    pub fn create_table(name: &str, ip: &str, port: &str) -> Self {
+    pub fn create_table(id: &str, name: &str, username: &str, host: &str, port: &str) -> Self {
         Self {
+            id: id.parse::<usize>().unwrap(),
             name: name.to_string(),
-            ip: ip.to_string(),
+            username: username.to_string(),
+            host: host.to_string(),
             port: port.parse::<u16>().unwrap(),
         }
     }
@@ -37,6 +41,7 @@ fn main() {
         Some(MainCommand::Add(args)) => commands::add::run(args),
         Some(MainCommand::Remove(args)) => commands::remove::run(args),
         Some(MainCommand::List(args)) => commands::list::run(args),
+        Some(MainCommand::Connect(args)) => commands::connect::run(args),
         _ => println!("No command provided"),
     }
 }
