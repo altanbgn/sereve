@@ -26,8 +26,6 @@ pub fn run(args: &Connect) {
     session.set_tcp_stream(tcp_stream);
     session.handshake().unwrap();
 
-    @rct1sR0cks
-
     match session.userauth_password(&found_server.username, &password) {
         Ok(_) => {
             println!("Connected to {}", &found_server.name);
