@@ -34,6 +34,7 @@ impl Server {
     }
 }
 
+
 fn main() {
     let cli = Cli::parse();
 
