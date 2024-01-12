@@ -13,6 +13,7 @@ This CLI tool uses OpenSSH program so make sure you install that. Should be inst
 ## Installation
 Available and tested only on mac for now.
 ```
+brew tap altanbgn/sereve
 brew install sereve
 ```
 
