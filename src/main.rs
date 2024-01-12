@@ -7,7 +7,7 @@ use tabled::Tabled;
 
 #[derive(Parser, Debug)]
 #[command(author, version)]
-#[command(about = "An ssh client for my personal use :)")]
+#[command(about = "An ssh client for my personal use :). For now only supports adding, removing, listing and connecting to servers.")]
 pub struct Cli {
     #[command(subcommand)]
     command: Option<MainCommand>,
