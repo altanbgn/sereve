@@ -12,7 +12,7 @@ This CLI tool uses OpenSSH program so make sure you install that. Should be inst
 
 For help obviously
 ```
-sereve --help
+sereve help
 ```
 
 
