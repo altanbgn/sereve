@@ -10,15 +10,13 @@ So I made this beauty.
 This CLI tool uses OpenSSH program so make sure you install that. Should be installed by default on most systems.
 
 
-### Installation
+## Installation
 Available and tested only on mac for now.
 ```
 brew install sereve
 ```
 
-
-### Documentation
-
+## Documentation
 For help obviously
 ```
 sereve help
