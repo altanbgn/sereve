@@ -1,5 +1,5 @@
 # sereve
-CLI Tool for SSH address management
+CLI Tool for SSH address manager
 
 
 Hello!
@@ -9,6 +9,15 @@ So I made this beauty.
 
 This CLI tool uses OpenSSH program so make sure you install that. Should be installed by default on most systems.
 
+
+### Installation
+Available and tested only on mac for now.
+```
+brew install sereve
+```
+
+
+### Documentation
 
 For help obviously
 ```
