@@ -26,8 +26,6 @@ pub fn run(args: &Remove) {
                 Ok(_) => println!("Successfully removed!"),
                 Err(e) => panic!("Error: {}", e),
             };
-
-            println!("{:?}", servers);
         },
         Err(e) => {
             match e.raw_os_error() {
