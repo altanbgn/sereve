@@ -7,7 +7,8 @@ use tabled::Tabled;
 
 #[derive(Parser, Debug)]
 #[command(author, version)]
-#[command(about = "An ssh client for my personal use :). For now only supports adding, removing, listing and connecting to servers.")]
+#[command(about = "An ssh manager for my personal use :). For now only supports adding, removing, listing and connecting to servers.")]
+#[command()]
 pub struct Cli {
     #[command(subcommand)]
     command: Option<MainCommand>,
@@ -33,7 +34,6 @@ impl Server {
         }
     }
 }
-
 
 fn main() {
     let cli = Cli::parse();
