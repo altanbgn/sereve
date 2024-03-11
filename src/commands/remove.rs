@@ -10,16 +10,17 @@ pub struct Remove {
 }
 
 pub fn run(args: &Remove) {
-    match metadata("servers.json") {
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+    match metadata(&home_path) {
         Ok(_) => {
-            let file = File::open("servers.json").unwrap();
+            let file = File::open(&home_path).unwrap();
             let mut servers: Vec<Server> = serde_json::from_reader(file).unwrap();
             servers.retain(|server| server.id != args.id);
 
             let file = OpenOptions::new()
                 .write(true)
                 .truncate(true)
-                .open("servers.json")
+                .open(&home_path)
                 .unwrap();
 
             match serde_json::to_writer_pretty(file, &servers) {

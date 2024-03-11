@@ -1,8 +1,8 @@
-use std::fs::File;
-use std::process::Command;
 use crate::Server;
 use clap::Args;
 use serde::{Deserialize, Serialize};
+use std::fs::File;
+use std::process::Command;
 
 #[derive(Args, Debug, Deserialize, Serialize)]
 pub struct Connect {
@@ -11,7 +11,8 @@ pub struct Connect {
 }
 
 pub fn run(args: &Connect) {
-    let file = File::open("servers.json").unwrap();
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+    let file = File::open(home_path).unwrap();
     let servers: Vec<Server> = serde_json::from_reader(file).unwrap();
     let found_server = servers
         .into_iter()

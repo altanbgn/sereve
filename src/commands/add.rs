@@ -19,9 +19,11 @@ pub struct Add {
 }
 
 pub fn run(args: &Add) {
-    match metadata("servers.json") {
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+
+    match metadata(&home_path) {
         Ok(_) => {
-            let file = File::open("servers.json").unwrap();
+            let file = File::open(&home_path).unwrap();
             let mut servers: Vec<Server> = serde_json::from_reader(file).unwrap();
 
             servers.push(Server {
@@ -32,7 +34,7 @@ pub fn run(args: &Add) {
                 port: args.port.clone(),
             });
 
-            let file = OpenOptions::new().write(true).open("servers.json").unwrap();
+            let file = OpenOptions::new().write(true).open(&home_path).unwrap();
             match serde_json::to_writer(file, &servers) {
                 Ok(_) => println!("Server added"),
                 Err(e) => panic!("Error: {}", e),
@@ -47,7 +49,7 @@ pub fn run(args: &Add) {
                     host: args.host.clone(),
                     port: args.port.clone(),
                 }];
-                let file = File::create("servers.json").unwrap();
+                let file = File::create(&home_path).unwrap();
                 match serde_json::to_writer(file, &servers) {
                     Ok(_) => println!("Server added"),
                     Err(e) => panic!("Error: {}", e),

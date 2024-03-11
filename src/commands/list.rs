@@ -1,15 +1,18 @@
 use crate::Server;
 use clap::Args;
 use serde::{Deserialize, Serialize};
-use std::fs::File;
 use tabled::Table;
+use std::fs::File;
+
+extern crate dirs;
 
 #[derive(Args, Debug, Deserialize, Serialize)]
 pub struct List {}
 
 pub fn run(_: &List) {
     let mut servers_table: Vec<Server> = vec![];
-    match File::open("servers.json") {
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+    match File::open(home_path) {
         Ok(file) => {
             let servers: Vec<Server> = serde_json::from_reader(file).unwrap();
 
