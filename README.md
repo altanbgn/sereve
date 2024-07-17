@@ -7,7 +7,7 @@ The reason why I made this tool is because I work with bunch of servers through 
 So I made this beauty.
 
 
-This CLI tool uses OpenSSH program so make sure you install that. Should be installed by default on most systems.
+This CLI tool uses `openssh` so make sure you install that. Should be installed by default on most systems.
 
 
 ## Installation
