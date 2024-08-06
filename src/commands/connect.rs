@@ -11,7 +11,7 @@ pub struct Connect {
 }
 
 pub fn run(args: &Connect) {
-    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/.servers.json";
     let file = File::open(home_path).unwrap();
     let servers: Vec<Server> = serde_json::from_reader(file).unwrap();
     let found_server = servers

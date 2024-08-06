@@ -10,7 +10,7 @@ pub struct Remove {
 }
 
 pub fn run(args: &Remove) {
-    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/.servers.json";
     match metadata(&home_path) {
         Ok(_) => {
             let file = File::open(&home_path).unwrap();

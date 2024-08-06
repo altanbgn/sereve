@@ -11,7 +11,7 @@ pub struct List {}
 
 pub fn run(_: &List) {
     let mut servers_table: Vec<Server> = vec![];
-    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/servers.json";
+    let home_path = dirs::home_dir().unwrap().to_str().unwrap().to_string() + "/.servers.json";
     match File::open(home_path) {
         Ok(file) => {
             let servers: Vec<Server> = serde_json::from_reader(file).unwrap();
